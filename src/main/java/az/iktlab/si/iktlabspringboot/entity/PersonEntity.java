@@ -1,34 +1,25 @@
 package az.iktlab.si.iktlabspringboot.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "person", schema = "iktlab_default")
+@Table(name = "person")
 public class PersonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    private Long id;
 
-    @Column(name = "clmn_name",
-            unique = true,
-            nullable = false)
     private String name;
 
-    @Column(name = "clmn_surname",
-    nullable = true)
     private String surname;
 
-    @Column(name = "clmn_age", nullable = false)
     private int age;
 }

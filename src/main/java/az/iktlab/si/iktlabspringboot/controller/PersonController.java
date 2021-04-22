@@ -1,29 +1,25 @@
 package az.iktlab.si.iktlabspringboot.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import az.iktlab.si.iktlabspringboot.dto.PersonDto;
+import az.iktlab.si.iktlabspringboot.entity.PersonEntity;
+import az.iktlab.si.iktlabspringboot.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/person")
 public class PersonController {
 
-//    @GetMapping("/get")
-//    public List<Person> getAll() {
-//        return Service.getAll();
-//    }
-//
-//    @GetMapping("/get/{age}")
-//    public List<Person> getByAge(@PathVariable("age") int age) {
-//        return Service.getByAge(age);
-//    }
-//
-//    @GetMapping("/getb")
-//    public List<Person> getByAgeRP(@RequestParam("age") int age) {
-//        return Service.getByAge(age);
-//    }
-//
-//    @PostMapping("/add")
-//    public boolean add(@RequestBody Person person) {
-//        return Service.add(person);
-//    }
+    @Autowired
+    private PersonService service;
+
+    @GetMapping("/v1")
+    public void save() {
+        service.save();
+    }
+
+    public void insert(@RequestBody PersonDto person) {
+        service.insert(person);
+    }
 }
